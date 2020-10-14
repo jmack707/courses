@@ -10,9 +10,9 @@ Create Datacenters
     DNS >> GSLB >> Data Centers >> Data Center List >> +
         Set Name:       DC1     DC2
 
-Create Servers
+Create GTM Servers
     DNS >> GSLB >> Servers >> Server List
-        Set Name: DNS-Server_DC1
+        Set Name: gtm.dc1
         Set Data Center: DC1
 
             BIG-IP System Device
@@ -20,10 +20,10 @@ Create Servers
                 Address: 10.1.10.11
                 Click: Add
 
-        Set Health Monitor: bigip5
+        Set Health Monitor: bigip
 
 
-        Set Name: DNS-Server_DC2
+        Set Name: gtm.dc2
         Set Data Center: DC2
 
             BIG-IP System Device
@@ -31,10 +31,11 @@ Create Servers
                 Address: 10.1.10.12
                 Click: Add
 
-        Set Health Monitor: bigip5
+        Set Health Monitor: bigip
 
-            DNS >> GSLB >> Servers >> Server List
-        Set Name: DNS-Server_DC1
+Create LTM Servers        
+    DNS >> GSLB >> Servers >> Server List
+        Set Name: ltm.dc1
         Set Data Center: DC1
 
             BIG-IP System Device
@@ -46,7 +47,7 @@ Create Servers
         Set Virtual Server Discovery: Enable
 
 
-        Set Name: DNS-Server_DC2
+        Set Name: ltm.dc2
         Set Data Center: DC2
 
             BIG-IP System Device
