@@ -16,6 +16,12 @@
             "mcpAuditLog": "enable",
             "tmshAuditLog": true
         },
+        "admin": {
+            "class": "User",
+            "userType": "regular",
+            "password": "admin",
+            "shell": "bash"
+        },
         "myDns": {
             "class": "DNS",
             "nameServers": [

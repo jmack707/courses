@@ -17,7 +17,7 @@ Create GTM Servers
 
             BIG-IP System Device
                 Name: bigip5.f5lab.local
-                Address: 10.1.10.11
+                Address: 10.1.20.11
                 Click: Add
 
         Set Health Monitor: bigip
@@ -28,7 +28,7 @@ Create GTM Servers
 
             BIG-IP System Device
                 Name: bigip6.f5lab.local
-                Address: 10.1.10.12
+                Address: 10.1.20.12
                 Click: Add
 
         Set Health Monitor: bigip
@@ -40,7 +40,7 @@ Create LTM Servers
 
             BIG-IP System Device
                 Name: bigip1.f5lab.local
-                Address: 10.1.10.4
+                Address: 10.1.20.4
                 Click: Add
 
         Set Health Monitor: bigip
@@ -52,7 +52,7 @@ Create LTM Servers
 
             BIG-IP System Device
                 Name: bigip2.f5lab.local
-                Address: 10.1.10.5
+                Address: 10.1.20.5
                 Click: Add
 
         Set Health Monitor: bigip5
