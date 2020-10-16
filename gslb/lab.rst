@@ -68,3 +68,26 @@ ADD BIGIP6(GTM2) to BIGIIP5(GTM1)
     Enter: gtm_add admin@10.1.20.11
         Password: admin
 
+Create GTM Pool
+    DNS >> GSLB >> Pools >> Pool List >> +
+        Name: app1.gtm.pl
+        Type: A
+        Virtual Server:
+            GSLB/A1/dc1.app1.https.vs
+            GSLB/A1/dc2.app1.https.vs
+
+        Name: app2.gtm.pl
+        Type: A
+        Virtual Server:
+            GSLB/A1/dc1.app2.https.vs
+            GSLB/A1/dc2.app2.https.vs
+
+Create Wide IPs
+    DNS >> GSLB >> Wide IPs >> Wide IP List>> +
+        Name: app1.gslb.acme.com
+        type: A
+        Pool: app1.gtm.pl
+
+        Name: app2.gslb.acme.com
+        type: A
+        Pool: app2.gtm.pl
