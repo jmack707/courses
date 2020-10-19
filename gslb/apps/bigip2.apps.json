@@ -18,7 +18,7 @@
         "dc2.app1.https.vs": {
           "class": "Service_TCP",
           "virtualAddresses": [
-            "10.1.10.102"
+            "10.1.10.200"
           ],
           "virtualPort": 443,
           "pool": "app1.https.pl"
@@ -41,7 +41,7 @@
         "dc2.app2.https.vs": {
           "class": "Service_TCP",
           "virtualAddresses": [
-            "10.1.10.103"
+            "10.1.10.201"
           ],
           "virtualPort": 443,
           "pool": "app2.https.pl"
