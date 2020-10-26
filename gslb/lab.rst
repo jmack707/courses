@@ -1,4 +1,9 @@
 
+Configure GSLB Sync
+    DNS >> Setting GSLB General
+        Synchronize: "checked"
+        Group Name: acme
+
 Create Listeners 
 
     DNS >> Delivery >> Listeners >> Listeners List >> +
@@ -91,3 +96,7 @@ Create Wide IPs
         Name: app2.gslb.acme.com
         type: A
         Pool: app2.gtm.pl
+
+
+
+DNS Sync https://support.f5.com/csp/article/K13734
