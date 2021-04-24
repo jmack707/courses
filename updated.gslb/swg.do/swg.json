@@ -5,7 +5,7 @@
     "label": "my BIG-IP declaration for declarative onboarding",
     "Common": {
         "class": "Tenant",
-        "hostname": "swg.f5lab.local",
+        "hostname": "bigip1.f5lab.local",
         "system":{
             "class": "System",
             "autoCheck": false,
@@ -25,8 +25,7 @@
         "myDns": {
             "class": "DNS",
             "nameServers": [
-                "10.1.10.99",
-                "10.1.10.199"
+                "10.1.20.7"
             ],
             "search": [
                 "f5lab.local"
@@ -38,6 +37,11 @@
                 "10.1.10.1"
             ],
             "timezone": "UTC"
+        },
+        "myProvisioning": {
+            "class": "Provision",
+            "ltm": "nominal",
+            "apm": "nominal"
         },
         "internal": {
             "class": "VLAN",
@@ -52,7 +56,7 @@
         },
         "internal-self": {
             "class": "SelfIp",
-            "address": "10.1.20.13/24",
+            "address": "10.1.20.4/24",
             "vlan": "internal",
             "allowService": "default",
             "trafficGroup": "traffic-group-local-only"
@@ -70,7 +74,7 @@
         },
         "external-self": {
             "class": "SelfIp",
-            "address": "10.1.10.13/24",
+            "address": "10.1.10.4/24",
             "vlan": "external",
             "allowService": "none",
             "trafficGroup": "traffic-group-local-only"

@@ -1,17 +1,21 @@
 {
     "class": "ADC",
     "schemaVersion": "3.6.0",
-    "id": "GSLB_Sample",
+    "id": "APP1_Demo",
 
-    "Example_Tenant1": {
+    "APP1_Tenant1": {
         "class": "Tenant",
         "Application": {
             "class": "Application",
             "template": "shared",
-            "testDomain": {
+            "app1.gslb.acme.com": {
                 "class": "GSLB_Domain",
                 "domainName": "app1.gslb.acme.com",
                 "resourceRecordType": "A",
+                "lastResortPool": {
+                    "use": "app1.https.gtm.pl"
+                },
+                "lastResortPoolType": "A",
                 "pools": [
                     {
                         "use": "app1.https.gtm.pl"
@@ -47,7 +51,7 @@
             "bigip1.f5lab.local": {
                 "class": "GSLB_Server",
                 "dataCenter": {
-                    "use": "dc1"
+                    "use": "DC1"
                 },
                 "devices": [
                     {
