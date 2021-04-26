@@ -94,7 +94,36 @@
                     }         
 
                 ]
-            }                               
+            },
+            "idp.f5lab.com": {
+                "class": "GSLB_Domain",
+                "domainName": "idp.f5lab.local",
+                "resourceRecordType": "A",
+                "lastResortPool": {
+                    "use": "idp.https.gtm.pl"
+                },
+                "lastResortPoolType": "A",
+                "pools": [
+                    {
+                        "use": "idp.https.gtm.pl"
+                    }                  
+
+                ]
+            },
+            "idp.https.gtm.pl": {
+                "class": "GSLB_Pool",
+                "resourceRecordType": "A",
+                "ttl": 0,
+                "members": [
+                    {
+                        "server": {
+                            "use": "/Common/Shared/bigip1.f5lab.local"
+                        },
+                        "virtualServer": "idp.https.vs"
+                    }         
+
+                ]
+            }                   
         }
     }, 
 
@@ -121,7 +150,12 @@
                         "address": "10.1.10.100",
                         "port": 443,
                         "name": "iap1.https.vs"
-                    }
+                    },
+                    {
+                        "address": "10.1.10.110",
+                        "port": 443,
+                        "name": "idp.https.vs"
+                    }                    
                 ]
             },              
             "bigip5.f5lab.local": {

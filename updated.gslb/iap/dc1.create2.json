@@ -95,7 +95,7 @@
 
                 ]
             },
-            "idp.f5lab.com": {
+            "idp.f5lab.local": {
                 "class": "GSLB_Domain",
                 "domainName": "idp.f5lab.local",
                 "resourceRecordType": "A",
