@@ -1,19 +1,20 @@
 
-Configure GSLB Sync
+Configure GSLB Sync on BIG-IP 5 and BIG-IP6
     DNS >> Setting GSLB General
         Synchronize: "checked"
         Group Name: acme
 
-Create Listeners 
+Create Listeners on BIG-IP 5 and BIG-IP6
 
     DNS >> Delivery >> Listeners >> Listeners List >> +
-        Set Name:                dns1.acme.com (BIGIP A)     dns2.acme.com (BIGIP B)
-        Set IP address:          10.1.10.99 (BIGIP A)        10.1.10.199 (BIGIP B)
+        Set Name:                dns1.acme.com (BIG-IP 5)     dns2.acme.com (BIG-IP 6)
+        Set IP address:          10.1.10.99 (BIG-IP 5)        10.1.10.199 (BIG-IP 6)
         Set VLAN and Tunnels:    external
 
-Create Datacenters
+Create Two Datacenters only on BIG-IP 5
     DNS >> GSLB >> Data Centers >> Data Center List >> +
-        Set Name:       DC1     DC2
+        Set Name:       DC1    
+        Set Name:       DC2
 
 Create GTM Servers
     DNS >> GSLB >> Servers >> Server List
