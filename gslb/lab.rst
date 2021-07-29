@@ -24,7 +24,7 @@ Create GTM Servers
 
           -  BIG-IP System Device
            -    Name: bigip5.f5lab.local
-           -    Address: 10.1.20.11
+           -    Address: 10.1.10.11
            -    Click: Add
            -    Cick: OK
 
@@ -37,7 +37,7 @@ Create GTM Servers
 
            - BIG-IP System Device
             -    Name: bigip6.f5lab.local
-            -    Address: 10.1.20.12
+            -    Address: 10.1.10.12
             -    Click: Add
             -    Click: OK
 
@@ -52,7 +52,7 @@ Create LTM Servers
 
            - BIG-IP System Device
             -    Name: bigip1.f5lab.local
-            -    Address: 10.1.20.4
+            -    Address: 10.1.10.4
             -    Click: Add
             -    Click: OK
 
@@ -65,7 +65,7 @@ Create LTM Servers
 
            - BIG-IP System Device
             -    Name: bigip2.f5lab.local
-            -    Address: 10.1.20.5
+            -    Address: 10.1.10.5
             -    Click: Add
 
        - Set Health Monitor: bigip5
@@ -79,7 +79,7 @@ Install Device Certificates
 
 ADD BIGIP6(GTM2) to BIGIIP5(GTM1)
     - Click Putty for BIGIP6
-     - Enter: gtm_add admin@10.1.20.11
+     - Enter: gtm_add admin@10.1.10.11
      -  Password: admin
 
 Create GTM Pool
