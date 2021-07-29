@@ -74,13 +74,13 @@ Create LTM Servers
 
 Install Device Certificates
     - Click Putty for bigip5
-    - Enter: bigip_add
-      -  Password: admin
+     - Enter: bigip_add
+     -  Password: admin
 
 ADD BIGIP6(GTM2) to BIGIIP5(GTM1)
     - Click Putty for BIGIP6
-    - Enter: gtm_add admin@10.1.20.11
-      -  Password: admin
+     - Enter: gtm_add admin@10.1.20.11
+     -  Password: admin
 
 Create GTM Pool
     DNS >> GSLB >> Pools >> Pool List >> +
