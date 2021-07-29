@@ -1,8 +1,8 @@
 
 Configure GSLB Sync on BIG-IP 5 and BIG-IP6
     DNS >> Setting GSLB General
-       - [] Synchronize: "checked"
-       - []Group Name: acme
+       - [ ] Synchronize: "checked"
+       - [ ] Group Name: acme
 
 Create Listeners on BIG-IP 5 and BIG-IP6
 
