@@ -20,24 +20,27 @@ Create GTM Servers
     DNS >> GSLB >> Servers >> Server List
        - Set Name: gtm.dc1
        - Set Data Center: DC1
+       - Under Devices click Add
 
           -  BIG-IP System Device
            -    Name: bigip5.f5lab.local
            -    Address: 10.1.20.11
            -    Click: Add
+           -    Cick: OK
 
-        Set Health Monitor: bigip
+       - Set Health Monitor: bigip
 
 
-        Set Name: gtm.dc2
-        Set Data Center: DC2
+       - Set Name: gtm.dc2
+       - Set Data Center: DC2
 
-            BIG-IP System Device
-                Name: bigip6.f5lab.local
-                Address: 10.1.20.12
-                Click: Add
+           - BIG-IP System Device
+            -    Name: bigip6.f5lab.local
+            -    Address: 10.1.20.12
+            -    Click: Add
+            -    Click: OK
 
-        Set Health Monitor: bigip
+       - Set Health Monitor: bigip
 
 Create LTM Servers        
     DNS >> GSLB >> Servers >> Server List
