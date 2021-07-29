@@ -28,7 +28,9 @@ Create GTM Servers
            -    Click: Add
            -    Cick: OK
 
-       - Under Devices click Add
+       - Set Health Monitor: bigip
+       - Set Virtual Server Discovery: Enable
+       - Click: Finish
 
        - Set Name: gtm.dc2
        - Set Data Center: DC2
@@ -40,31 +42,35 @@ Create GTM Servers
             -    Click: OK
 
        - Set Health Monitor: bigip
+       - Set Virtual Server Discovery: Enable
+       - Click: Finish       
 
 Create LTM Servers        
     DNS >> GSLB >> Servers >> Server List
-        Set Name: ltm.dc1
-        Set Data Center: DC1
+       - Set Name: ltm.dc1
+       - Set Data Center: DC1
 
-            BIG-IP System Device
-                Name: bigip1.f5lab.local
-                Address: 10.1.20.4
-                Click: Add
+           - BIG-IP System Device
+             -   Name: bigip1.f5lab.local
+             -   Address: 10.1.20.4
+             -   Click: Add
+             -   Click: OK
 
-        Set Health Monitor: bigip
-        Set Virtual Server Discovery: Enable
+       - Set Health Monitor: bigip
+       - Set Virtual Server Discovery: Enable
+       - Click: Finish 
 
+       - Set Name: ltm.dc2
+       - Set Data Center: DC2
 
-        Set Name: ltm.dc2
-        Set Data Center: DC2
+           - BIG-IP System Device
+            -    Name: bigip2.f5lab.local
+            -    Address: 10.1.20.5
+            -    Click: Add
 
-            BIG-IP System Device
-                Name: bigip2.f5lab.local
-                Address: 10.1.20.5
-                Click: Add
-
-        Set Health Monitor: bigip5
-        Set Virtual Server Discovery: Enable
+       - Set Health Monitor: bigip5
+       - Set Virtual Server Discovery: Enable
+       - Click: Finish 
 
 Install Device Certificates
     Click Putty for bigip5
