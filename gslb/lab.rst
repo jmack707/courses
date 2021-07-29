@@ -51,10 +51,10 @@ Create LTM Servers
        - Set Data Center: DC1
 
            - BIG-IP System Device
-             -   Name: bigip1.f5lab.local
-             -   Address: 10.1.20.4
-             -   Click: Add
-             -   Click: OK
+            -    Name: bigip1.f5lab.local
+            -    Address: 10.1.20.4
+            -    Click: Add
+            -    Click: OK
 
        - Set Health Monitor: bigip
        - Set Virtual Server Discovery: Enable
