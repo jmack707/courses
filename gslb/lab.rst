@@ -28,8 +28,7 @@ Create GTM Servers
            -    Click: Add
            -    Cick: OK
 
-       - Set Health Monitor: bigip
-
+       - Under Devices click Add
 
        - Set Name: gtm.dc2
        - Set Data Center: DC2
