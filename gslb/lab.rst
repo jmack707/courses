@@ -82,6 +82,7 @@ ADD BIGIP6(GTM2) to BIGIIP5(GTM1)
     - Click Putty for BIGIP6
      - Enter: gtm_add admin@10.1.10.11
      -  Password: admin
+     Note: 10.1.10.11 is the self IP of BIGIP5
 
 Create GTM Pool
     DNS >> GSLB >> Pools >> Pool List >> +
