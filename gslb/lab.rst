@@ -34,6 +34,7 @@ Create GTM Servers
 
        - Set Name: gtm.dc2
        - Set Data Center: DC2
+       - Under Devices click Add       
 
            - BIG-IP System Device
             -    Name: bigip6.f5lab.local
