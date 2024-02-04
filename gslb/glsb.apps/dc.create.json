@@ -1,16 +1,16 @@
 {
     "class": "ADC",
-    "schemaVersion": "3.6.0",
-    "id": "AS3-APPS-DC",
+    "schemaVersion": "3.49.0",
+    "id": "AS3-APPS",
 
     "APP1_Tenant1": {
         "class": "Tenant",
         "Application": {
             "class": "Application",
             "template": "shared",
-            "app1.acme.com": {
+            "app1.gslb.acme.com": {
                 "class": "GSLB_Domain",
-                "domainName": "app1.acme.com",
+                "domainName": "app1.gslb.acme.com",
                 "resourceRecordType": "A",
                 "lastResortPool": {
                     "use": "app1.https.gtm.pl"
@@ -32,14 +32,28 @@
                         "server": {
                             "use": "/Common/Shared/bigip1.f5lab.local"
                         },
-                        "virtualServer": "iap1.https.vs"
-                    }         
+                        "virtualServer": "dc1.app1.https.vs"
+                    },
+                    {
+                        "server": {
+                            "use": "/Common/Shared/bigip2.f5lab.local"
+                        },
+                        "virtualServer": "dc2.app1.https.vs"
+                    }           
 
                 ]
-            },
-            "app2.acme.com": {
+            }          
+        }
+    }, 
+
+    "APP2_Tenant1": {
+        "class": "Tenant",
+        "Application": {
+            "class": "Application",
+            "template": "shared",
+            "app2.gslb.acme.com": {
                 "class": "GSLB_Domain",
-                "domainName": "app2.acme.com",
+                "domainName": "app2.gslb.acme.com",
                 "resourceRecordType": "A",
                 "lastResortPool": {
                     "use": "app2.https.gtm.pl"
@@ -61,72 +75,19 @@
                         "server": {
                             "use": "/Common/Shared/bigip1.f5lab.local"
                         },
-                        "virtualServer": "iap1.https.vs"
-                    }         
-
-                ]
-            },
-            "iap1.acme.com": {
-                "class": "GSLB_Domain",
-                "domainName": "iap1.acme.com",
-                "resourceRecordType": "A",
-                "lastResortPool": {
-                    "use": "iap1.https.gtm.pl"
-                },
-                "lastResortPoolType": "A",
-                "pools": [
-                    {
-                        "use": "iap1.https.gtm.pl"
-                    }                  
-
-                ]
-            },
-            "iap1.https.gtm.pl": {
-                "class": "GSLB_Pool",
-                "resourceRecordType": "A",
-                "ttl": 0,
-                "members": [
+                        "virtualServer": "dc1.app2.https.vs"
+                    },
                     {
                         "server": {
-                            "use": "/Common/Shared/bigip1.f5lab.local"
+                            "use": "/Common/Shared/bigip2.f5lab.local"
                         },
-                        "virtualServer": "iap1.https.vs"
-                    }         
+                        "virtualServer": "dc2.app2.https.vs"
+                    }           
 
                 ]
-            },
-            "idp.f5lab.com": {
-                "class": "GSLB_Domain",
-                "domainName": "idp.f5lab.local",
-                "resourceRecordType": "A",
-                "lastResortPool": {
-                    "use": "idp.https.gtm.pl"
-                },
-                "lastResortPoolType": "A",
-                "pools": [
-                    {
-                        "use": "idp.https.gtm.pl"
-                    }                  
-
-                ]
-            },
-            "idp.https.gtm.pl": {
-                "class": "GSLB_Pool",
-                "resourceRecordType": "A",
-                "ttl": 0,
-                "members": [
-                    {
-                        "server": {
-                            "use": "/Common/Shared/bigip1.f5lab.local"
-                        },
-                        "virtualServer": "idp.https.vs"
-                    }         
-
-                ]
-            }                   
+            }          
         }
-    }, 
-
+    },
     "Common": {
         "class": "Tenant",
         "Shared": {
@@ -147,15 +108,15 @@
                 ],
                 "virtualServers": [
                     {
-                        "address": "10.1.10.100",
+                        "address": "10.1.10.104",
                         "port": 443,
-                        "name": "iap1.https.vs"
+                        "name": "dc1.app1.https.vs"
                     },
                     {
-                        "address": "10.1.10.110",
+                        "address": "10.1.10.105",
                         "port": 443,
-                        "name": "idp.https.vs"
-                    }                    
+                        "name": "dc1.app2.https.vs"
+                    }
                 ]
             },              
             "bigip5.f5lab.local": {
@@ -168,6 +129,43 @@
                         "address": "10.1.20.11"
                     }
                 ]
+            },
+            "DC2": {
+                "class": "GSLB_Data_Center"
+            },
+            "bigip2.f5lab.local": {
+                "class": "GSLB_Server",
+                "dataCenter": {
+                    "use": "DC2"
+                },  
+                "devices": [
+                    {
+                        "address": "10.1.20.5"
+                    }                    
+                ],
+                "virtualServers": [
+                    {
+                        "address": "10.1.10.204",
+                        "port": 443,
+                        "name": "dc2.app1.https.vs"
+                    },
+                    {
+                        "address": "10.1.10.205",
+                        "port": 443,
+                        "name": "dc2.app2.https.vs"
+                    }
+                ]                                           
+            },
+            "bigip6.f5lab.local": {
+                "class": "GSLB_Server",
+                "dataCenter": {
+                    "use": "DC2"
+                },
+                "devices": [
+                    {
+                        "address": "10.1.20.12"
+                    }
+                ]                
             }
         }
     }

@@ -1,7 +1,7 @@
 {
     "class": "ADC",
     "schemaVersion": "3.23.0",
-    "id": "AS3-APPS-DC1",
+    "id": "AS3-APPS",
    
     "APP1_Tenant1": {
         "class": "Tenant"
