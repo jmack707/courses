@@ -8,9 +8,9 @@
         "Application": {
             "class": "Application",
             "template": "shared",
-            "app1.gslb.acme.com": {
+            "app1.acme.com": {
                 "class": "GSLB_Domain",
-                "domainName": "app1.gslb.acme.com",
+                "domainName": "app1.acme.com",
                 "resourceRecordType": "A",
                 "lastResortPool": {
                     "use": "app1.https.gtm.pl"
@@ -51,9 +51,9 @@
         "Application": {
             "class": "Application",
             "template": "shared",
-            "app2.gslb.acme.com": {
+            "app2.acme.com": {
                 "class": "GSLB_Domain",
-                "domainName": "app2.gslb.acme.com",
+                "domainName": "app2.acme.com",
                 "resourceRecordType": "A",
                 "lastResortPool": {
                     "use": "app2.https.gtm.pl"
