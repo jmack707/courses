@@ -36,11 +36,6 @@
                     "url": "https://github.com/jmack707/courses/raw/8c1dc260ea2a77080e813112822463c69a3f78ec/gslb/apm/profile_Common_app-access.conf.tar.gz",
                     "ignoreChanges": true,
                     "enable": true
-                },
-                "Insert_Headers_iRule": {
-                    "class": "iRule",
-                    "iRule": {
-                      "url": "https://raw.githubusercontent.com/f5devcentral/f5-automation-labs/master/files/irules/maintenance-page.irule"
                 }, 
                 "app1.https.pl": {
                     "class": "Pool",
@@ -71,7 +66,13 @@
                     "certificate": {"bigip":"/Common/acme.com-wildcard"},
                     "privateKey": {"bigip":"/Common/acme.com-wildcard"}
                   
-                }               
+                },
+                "Insert_Headers_iRule": {
+                    "class": "iRule",
+                    "iRule": {
+                      "url": "https://github.com/jmack707/courses/blob/main/gslb/iRules/insert_headers.irule"
+                    }
+                }
               },
             "A2": {
                 "class": "Application",
