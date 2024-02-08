@@ -27,6 +27,8 @@
                     "virtualPort": 443,
                     "iRules": ["Insert_Headers_iRule"],
                     "pool": "app1.https.pl",
+                    "persistenceMethods": [
+                      ],
                     "profileAccess": {
                         "use": "accessProfile"
                     }
@@ -70,7 +72,7 @@
                 "Insert_Headers_iRule": {
                     "class": "iRule",
                     "iRule": {
-                      "url": "https://github.com/jmack707/courses/blob/main/gslb/iRules/insert_headers.irule"
+                      "url": "https://raw.githubusercontent.com/jmack707/courses/main/gslb/iRules/insert_headers.irule"
                     }
                 }
               },
@@ -86,7 +88,19 @@
                         "10.1.10.105"
                     ],
                     "virtualPort": 443,
-                    "pool": "app2.https.pl"
+                    "iRules": ["Insert_Headers_iRule"],
+                    "pool": "app2.https.pl",
+                    "persistenceMethods": [
+                    ],
+                    "profileAccess": {
+                        "use": "accessProfile"
+                    }
+                },
+                "accessProfile": {
+                    "class": "Access_Profile",
+                    "url": "https://github.com/jmack707/courses/raw/8c1dc260ea2a77080e813112822463c69a3f78ec/gslb/apm/profile_Common_app-access.conf.tar.gz",
+                    "ignoreChanges": true,
+                    "enable": true
                 },
                 "app2.https.pl": {
                     "class": "Pool",
@@ -117,6 +131,12 @@
                     "certificate": {"bigip":"/Common/acme.com-wildcard"},
                     "privateKey": {"bigip":"/Common/acme.com-wildcard"}
                   
+                },
+                "Insert_Headers_iRule": {
+                    "class": "iRule",
+                    "iRule": {
+                      "url": "https://raw.githubusercontent.com/jmack707/courses/main/gslb/iRules/insert_headers.irule"
+                    }
                 }                         
             }
         }
