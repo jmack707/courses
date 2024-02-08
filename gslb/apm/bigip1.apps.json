@@ -25,6 +25,7 @@
                         "10.1.10.104"
                     ],
                     "virtualPort": 443,
+                    "iRules": ["Insert_Headers_iRule"],
                     "pool": "app1.https.pl",
                     "profileAccess": {
                         "use": "accessProfile"
@@ -36,6 +37,11 @@
                     "ignoreChanges": true,
                     "enable": true
                 },
+                "Insert_Headers_iRule": {
+                    "class": "iRule",
+                    "iRule": {
+                      "url": "https://raw.githubusercontent.com/f5devcentral/f5-automation-labs/master/files/irules/maintenance-page.irule"
+                }, 
                 "app1.https.pl": {
                     "class": "Pool",
                     "monitors": [
