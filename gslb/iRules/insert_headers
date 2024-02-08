@@ -1,0 +1,8 @@
+when HTTP_REQUEST_SEND {
+    clientside {
+        HTTP::header replace NAME [ACCESS::session data get session.ad.last.attr.displayName]
+        HTTP::header replace GROUPS [ACCESS::session data get session.ad.last.attr.memberOf]
+        HTTP::header replace EMAIL [ACCESS::session data get session.ad.last.attr.mail] 
+        HTTP::header replace USERID [ACCESS::session data get session.ad.last.attr.sAMAccountName]
+    }
+}
