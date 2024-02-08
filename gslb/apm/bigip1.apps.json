@@ -4,7 +4,7 @@
     "persist": true,
     "declaration": {
         "class": "ADC",
-        "schemaVersion": "3.23.0",
+        "schemaVersion": "3.49.0",
         "id": "gslbdemo1",
         "label": "BIGIP1 Demo App",
         "remark": "Demo Applications on BIGIP1",
