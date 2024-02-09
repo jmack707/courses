@@ -3,62 +3,125 @@
   "action": "deploy",
   "persist": true,
   "declaration": {
-    "class": "ADC",
-    "schemaVersion": "3.0.0",
-    "id": "gslbdemo1",
-    "label": "BIGIP2 Demo App",
-    "remark": "Demo Applications on BIGIP1",
-    "controls": {
-      "trace": true
-    },
-    "DC2": {
-      "class": "Tenant",
-      "A1": {
-        "class": "Application",
-        "app1.https.vs": {
-          "class": "Service_TCP",
-          "virtualAddresses": [
-            "10.1.10.204"
-          ],
-          "virtualPort": 443,
-          "pool": "app1.https.pl"
-        },
-        "app1.https.pl": {
-          "class": "Pool",
-          "monitors": [
-            "https"
-          ],
-          "members": [{
-            "servicePort": 6102,
-            "serverAddresses": [
-              "10.1.20.9"
-            ]
-          }]
-        }
+      "class": "ADC",
+      "schemaVersion": "3.49.0",
+      "id": "gslbdemo1",
+      "label": "BIGIP2 Demo App",
+      "remark": "Demo Applications on BIGIP2",
+      "controls": {
+          "trace": true
       },
-      "A2": {
-        "class": "Application",
-        "app2.https.vs": {
-          "class": "Service_TCP",
-          "virtualAddresses": [
-            "10.1.10.205"
-          ],
-          "virtualPort": 443,
-          "pool": "app2.https.pl"
-        },
-        "app2.https.pl": {
-          "class": "Pool",
-          "monitors": [
-            "https"
-          ],
-          "members": [{
-            "servicePort": 6103,
-            "serverAddresses": [
-              "10.1.20.9"
-            ]
-          }]
+      "DC2": {
+          "class": "Tenant",
+          "A1": {
+              "class": "Application",
+              "app1.https.vs": {
+                  "class": "Service_HTTPS",
+                  "clientTLS": {
+                      "bigip": "/Common/serverssl"
+                  },
+                  "serverTLS": "f5lab.local_clientssl",
+                  "virtualAddresses": [
+                      "10.1.10.204"
+                  ],
+                  "virtualPort": 443,
+                  "iRules": ["Insert_Headers_iRule"],
+                  "pool": "app1.https.pl",
+                  "persistenceMethods": [
+                    ],
+                    "profileAccess": {
+                        "use": "accessProfile"
+                    }    
+              }, 
+              "app1.https.pl": {
+                  "class": "Pool",
+                  "monitors": [
+                      "https"
+                  ],
+                  "members": [
+                      {
+                          "servicePort": 6102,
+                          "serverAddresses": [
+                              "10.1.20.9"
+                          ]
+                      }
+                  ]
+              },
+              "f5lab.local_clientssl": {
+                  "class": "TLS_Server",
+                  "certificates": [
+                      {
+                          "certificate": "cert"
+                      }
+                  ],
+                  "renegotiationEnabled": true
+              },
+                "cert": {
+                  "class": "Certificate",
+                  "certificate": {"bigip":"/Common/acme.com-wildcard"},
+                  "privateKey": {"bigip":"/Common/acme.com-wildcard"}
+                
+              },
+              "Insert_Headers_iRule": {
+                  "class": "iRule",
+                  "iRule": {
+                    "url": "https://raw.githubusercontent.com/jmack707/courses/main/gslb/iRules/insert_headers.irule"
+                  }
+              }
+            },
+          "A2": {
+              "class": "Application",
+              "app2.https.vs": {
+                  "class": "Service_HTTPS",
+                  "clientTLS": {
+                      "bigip": "/Common/serverssl"
+                  },
+                  "serverTLS": "f5lab.local_clientssl",
+                  "virtualAddresses": [
+                      "10.1.10.205"
+                  ],
+                  "virtualPort": 443,
+                  "iRules": ["Insert_Headers_iRule"],
+                  "pool": "app2.https.pl",
+                  "persistenceMethods": [
+                  ]
+              },
+              "app2.https.pl": {
+                  "class": "Pool",
+                  "monitors": [
+                      "https"
+                  ],
+                  "members": [
+                      {
+                          "servicePort": 6103,
+                          "serverAddresses": [
+                              "10.1.20.9"
+                          ]
+                      }
+                  ]
+              },
+              "f5lab.local_clientssl": {
+                  "class": "TLS_Server",
+                  "certificates": [
+                      {
+                          "certificate": "cert"
+                      }
+                  ],
+                  "renegotiationEnabled": true
+              },
+                "cert": {
+                  "class": "Certificate",
+                  "certificate": {"bigip":"/Common/acme.com-wildcard"},
+                  "privateKey": {"bigip":"/Common/acme.com-wildcard"}               
+              },
+              "Insert_Headers_iRule": {
+                  "class": "iRule",
+                  "iRule": {
+                    "url": "https://raw.githubusercontent.com/jmack707/courses/main/gslb/iRules/insert_headers.irule"
+                  }
+                }
+            }                         
         }
-      }
     }
-  }
 }
+
