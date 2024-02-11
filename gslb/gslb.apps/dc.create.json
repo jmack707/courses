@@ -26,6 +26,7 @@
             "app1.https.gtm.pl": {
                 "class": "GSLB_Pool",
                 "resourceRecordType": "A",
+                "lbModePreferred": "topology",
                 "ttl": 0,
                 "members": [
                     {
