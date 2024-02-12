@@ -18,6 +18,12 @@
                 "profileTCP": {
                     "bigip": "/Common/tcp"
                 },
+                "profileConnectivity": {
+                    "bigip": "/Common/solution1-cp"
+                },
+                "profileRewrite": {
+                    "bigip": "/Common/rewrite-portal"
+                },
                 "profileAccess": {
                     "bigip": "/Common/webtop.psp"
                 },

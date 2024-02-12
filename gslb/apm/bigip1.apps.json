@@ -10,20 +10,7 @@
         "remark": "Demo Applications on BIGIP1",
         "controls": {
             "trace": true
-        },
-        "Common": {
-            "class": "Tenant",
-            "Shared": {
-                "class": "Application",
-                "template": "shared",
-                "insert_headers.irule": {
-                    "class": "iRule",
-                    "iRule": {
-                        "url": "https://raw.githubusercontent.com/jmack707/courses/main/gslb/iRules/insert_headers.irule"
-                    }
-                }
-            }
-        },        
+        },       
         "DC1": {
             "class": "Tenant",
             "A1": {
@@ -33,7 +20,9 @@
                     "clientTLS": {
                         "bigip": "/Common/serverssl"
                     },
-                    "serverTLS": "f5lab.local_clientssl",
+                    "serverTLS": {
+                        "bigip": "/Common/Shared/acme-wildcard.ssl"
+                    },
                     "virtualAddresses": [
                         "10.1.10.104"
                     ],
@@ -61,22 +50,6 @@
                             ]
                         }
                     ]
-                },
-                "f5lab.local_clientssl": {
-                    "class": "TLS_Server",
-                    "certificates": [
-                        {
-                            "certificate": "cert"
-                        }
-                    ],
-                    "renegotiationEnabled": true
-                },
-                  "cert": {
-                    "class": "Certificate",
-                    "certificate": {"bigip":"/Common/acme.com-wildcard"},
-                    "privateKey": {"bigip":"/Common/acme.com-wildcard"}
-                  
-                
                 }
               },
             "A2": {
@@ -86,7 +59,9 @@
                     "clientTLS": {
                         "bigip": "/Common/serverssl"
                     },
-                    "serverTLS": "f5lab.local_clientssl",
+                    "serverTLS": {
+                        "bigip": "/Common/Shared/acme-wildcard.ssl"
+                    },
                     "virtualAddresses": [
                         "10.1.10.105"
                     ],
@@ -111,22 +86,7 @@
                             ]
                         }
                     ]
-                },
-                "f5lab.local_clientssl": {
-                    "class": "TLS_Server",
-                    "certificates": [
-                        {
-                            "certificate": "cert"
-                        }
-                    ],
-                    "renegotiationEnabled": true
-                },
-                  "cert": {
-                    "class": "Certificate",
-                    "certificate": {"bigip":"/Common/acme.com-wildcard"},
-                    "privateKey": {"bigip":"/Common/acme.com-wildcard"}
-                  
-                }                     
+                }      
             }
         }
     }

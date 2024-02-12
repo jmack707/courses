@@ -46,7 +46,6 @@
             }          
         }
     }, 
-
     "APP2_Tenant1": {
         "class": "Tenant",
         "Application": {
