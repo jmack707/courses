@@ -5,5 +5,11 @@
    
     "APP1_Tenant1": {
         "class": "Tenant"
-    }
+    },
+    "APP2_Tenant1": {
+        "class": "Tenant"
+    },
+    "Webtop_Tenant1": {
+        "class": "Tenant"
+    }        
 }
