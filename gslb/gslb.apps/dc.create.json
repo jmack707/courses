@@ -69,6 +69,7 @@
             "app2.https.gtm.pl": {
                 "class": "GSLB_Pool",
                 "resourceRecordType": "A",
+                "lbModePreferred": "topology",
                 "ttl": 0,
                 "members": [
                     {
@@ -88,6 +89,49 @@
             }          
         }
     },
+    "Webtop_Tenant1": {
+        "class": "Tenant",
+        "Application": {
+            "class": "Application",
+            "template": "shared",
+            "webtop.acme.com": {
+                "class": "GSLB_Domain",
+                "domainName": "webtop.acme.com",
+                "resourceRecordType": "A",
+                "lastResortPool": {
+                    "use": "webtop.https.gtm.pl"
+                },
+                "lastResortPoolType": "A",
+                "pools": [
+                    {
+                        "use": "webtop.https.gtm.pl"
+                    }                  
+
+                ]
+            },
+            "webtop.https.gtm.pl": {
+                "class": "GSLB_Pool",
+                "resourceRecordType": "A",
+                "lbModePreferred": "topology",
+                "ttl": 0,
+                "members": [
+                    {
+                        "server": {
+                            "use": "/Common/Shared/bigip1.f5lab.local"
+                        },
+                        "virtualServer": "dc1.webtop.https.vs"
+                    },
+                    {
+                        "server": {
+                            "use": "/Common/Shared/bigip2.f5lab.local"
+                        },
+                        "virtualServer": "dc2.webtop.https.vs"
+                    }           
+
+                ]
+            }          
+        }
+    },    
     "Common": {
         "class": "Tenant",
         "Shared": {
@@ -116,7 +160,12 @@
                         "address": "10.1.10.105",
                         "port": 443,
                         "name": "dc1.app2.https.vs"
-                    }
+                    },
+                    {
+                        "address": "10.1.10.100",
+                        "port": 443,
+                        "name": "dc1.webtop.https.vs"
+                    }                    
                 ]
             },              
             "bigip5.f5lab.local": {
@@ -153,6 +202,11 @@
                         "address": "10.1.10.205",
                         "port": 443,
                         "name": "dc2.app2.https.vs"
+                    },
+                    {
+                        "address": "10.1.10.200",
+                        "port": 443,
+                        "name": "dc2.webtop.https.vs"
                     }
                 ]                                           
             },
